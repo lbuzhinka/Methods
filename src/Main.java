@@ -12,8 +12,13 @@ public class Main {
 
         System.out.println("\nTask 3");
         int deliveryDistance = 95;
-        int deliveryDays = 1;
-        checkDeliveryDistanceAndDays(deliveryDistance, deliveryDays);
+        int deliveryDays = checkDeliveryDistanceAndDays(deliveryDistance);
+        if (deliveryDays == 0) {
+            System.out.println("Нет доставки");
+        }
+        else if (deliveryDays != 0){
+            System.out.println("Доставка займет " + deliveryDays  + " дня");
+        }
     }
 
     public static void checkLeapYear(int year) {
@@ -34,19 +39,19 @@ public class Main {
             System.out.println("Установите версию приложения для Android по ссылке");
         }
     }
-    public static void checkDeliveryDistanceAndDays (int deliveryDistance, int deliveryDays) {
-        if (deliveryDistance < 20) {
-            System.out.println("Потребуется дней: " + deliveryDays);
+    public static int checkDeliveryDistanceAndDays (int deliveryDistance) {
+        int deliveryTime = 1;
+        if (deliveryDistance > 20) {
+            deliveryTime++;
         }
-        else if (deliveryDistance >= 20 && deliveryDistance < 60){
-            deliveryDays = deliveryDays + 1;
-            System.out.println("Потребуется дней: " + deliveryDays);}
-        else if (deliveryDistance >= 60 && deliveryDistance <= 100 ) {
-            deliveryDays = deliveryDays + 2;
-            System.out.println("Потребуется дней: " + deliveryDays);}
-        else {
-            System.out.println("Расстояние слишком большое, доставки нет");
+        if (deliveryDistance > 60) {
+            deliveryTime++;
+        }
+        if (deliveryDistance > 100) {
+            return 0;
+        } else {
+            return deliveryTime;
         }
     }
 
-}
+    }
