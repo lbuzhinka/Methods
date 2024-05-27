@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -12,7 +14,7 @@ public class Main {
 
         System.out.println("\nTask 3");
         int deliveryDistance = 95;
-        int deliveryDays = checkDeliveryDistanceAndDays(deliveryDistance);
+        int deliveryDays = calculateDeliveryDays(deliveryDistance);
         if (deliveryDays == 0) {
             System.out.println("Нет доставки");
         }
@@ -29,17 +31,18 @@ public class Main {
         }
     }
     public static void checkOsAndYear(int clientOS, int clientDeviceYear) {
-        if (clientOS == 0 && clientDeviceYear < 2015) {
+        int currentYear = LocalDate.now().getYear();
+        if (clientOS == 0 && currentYear < 2015) {
             System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        } else if (clientOS == 0 && clientDeviceYear >= 2015){
+        } else if (clientOS == 0 && currentYear >= 2015){
             System.out.println("Установите версию приложения для iOS по ссылке");
-        } else if (clientOS == 1 && clientDeviceYear < 2015) {
+        } else if (clientOS == 1 && currentYear < 2015) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        } else if (clientOS == 1 && clientDeviceYear >= 2015) {
+        } else if (clientOS == 1 && currentYear >= 2015) {
             System.out.println("Установите версию приложения для Android по ссылке");
         }
     }
-    public static int checkDeliveryDistanceAndDays (int deliveryDistance) {
+    public static int calculateDeliveryDays (int deliveryDistance) {
         int deliveryTime = 1;
         if (deliveryDistance > 20) {
             deliveryTime++;
