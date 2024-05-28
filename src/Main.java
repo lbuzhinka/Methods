@@ -23,6 +23,8 @@ public class Main {
         }
     }
 
+
+
     public static void checkLeapYear(int year) {
         if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)) {
             System.out.println(year + " год является високосным");
@@ -34,29 +36,32 @@ public class Main {
         int currentYear = LocalDate.now().getYear();
         if (clientOS == 0 && currentYear < 2024) {
             System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        } else if (clientOS == 0 && currentYear == 2024){
+        } else if (clientOS == 0 && currentYear == 2024) {
             System.out.println("Установите версию приложения для iOS по ссылке");
         } else if (clientOS == 1 && currentYear < 2024) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
         } else if (clientOS == 1 && currentYear == 2024) {
             System.out.println("Установите версию приложения для Android по ссылке");
-        } else if (currentYear > 2024) {
-            System.out.println("Устройство еще не выпущено");
-        }
-    }
-    public static int calculateDeliveryDays (int deliveryDistance) {
-        int deliveryTime = 1;
-        if (deliveryDistance > 20) {
-            deliveryTime++;
-        }
-        if (deliveryDistance > 60) {
-            deliveryTime++;
-        }
-        if (deliveryDistance > 100) {
-            return 0;
         } else {
-            return deliveryTime;
+            System.out.println("Некорректные данные: такая система не поддерживается");
         }
     }
+
+
+        public static int calculateDeliveryDays ( int deliveryDistance){
+            int deliveryTime = 1;
+
+            if (deliveryDistance > 20) {
+                deliveryTime++;
+            }
+            if (deliveryDistance > 60) {
+                deliveryTime++;
+            }
+            if (deliveryDistance > 100) {
+                return 0;
+            } else {
+                return deliveryTime;
+            }
+        }
 
     }
