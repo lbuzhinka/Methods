@@ -34,12 +34,14 @@ public class Main {
         int currentYear = LocalDate.now().getYear();
         if (clientOS == 0 && currentYear < 2024) {
             System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-        } else if (clientOS == 0 && currentYear >= 2024){
+        } else if (clientOS == 0 && currentYear == 2024){
             System.out.println("Установите версию приложения для iOS по ссылке");
         } else if (clientOS == 1 && currentYear < 2024) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        } else if (clientOS == 1 && currentYear >= 2024) {
+        } else if (clientOS == 1 && currentYear == 2024) {
             System.out.println("Установите версию приложения для Android по ссылке");
+        } else if (currentYear > 2024) {
+            System.out.println("Устройство еще не выпущено");
         }
     }
     public static int calculateDeliveryDays (int deliveryDistance) {
